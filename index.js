@@ -50,4 +50,4 @@ app.io.route('new message', function* (next, data) {
   this.emit('update chatroom messages', data);
 });
 
-app.listen(80);
+app.listen(process.env.PORT || 80);
