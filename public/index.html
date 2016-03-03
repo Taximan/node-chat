@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>node-chat</title>
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+ 
+  <div id="app-wrapper">
+    
+    <div id="app-setup-modal">
+  
+      <form id="app-setup-modal-form">
+        <div id="app-setup-helpblock">pick a name</div>
+        <input type="text" id="app-setup-modal-form-input" autofocus="">
+        <button type="submit" id="app-setup-modal-form-submit">Accept</button>
+      </form>      
+
+    </div>
+
+    <div id="app">
+      
+
+      <div id="app-sidebar">
+     
+        <ul id="app-sidebar-roomusers">
+          <li>user001</li>
+          <li>user002</li>
+          <li>user003</li>
+          <li>user004</li>
+          <li>user005</li>
+        </ul>
+     
+        <ul id="app-sidebar-rooms">
+          <li>room001</li>
+          <li>room002</li>
+          <li class="active">room003</li>
+          <li>room004</li>
+          <li>room005</li>
+          <li>room006</li>
+          <li>room007</li>
+          <li>room008</li>
+          <li>room009</li>
+          <li>room010</li>
+        </ul>
+     
+      </div>
+      
+      <div id="app-main">
+       
+        <ul id="app-main-messages">
+          <li>
+            <div><em>someuser</em> (3/3/2016 12:31): </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, praesentium quae accusamus voluptates autem sit voluptatem deserunt omnis perferendis expedita rerum repellat, facere est sunt repudiandae voluptas libero. Nam, tempore.</p>
+          </li>
+        </ul>
+
+        <form id="app-main-messageform">
+          <textarea id="app-main-messageform-user-input" cols="30" rows="10" ></textarea>
+          <button type="submit">OK!</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script> // polyfills
+    if (!Object.keys) {
+  Object.keys = (function() {
+    'use strict';
+    var hasOwnProperty = Object.prototype.hasOwnProperty,
+        hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+        dontEnums = [
+          'toString',
+          'toLocaleString',
+          'valueOf',
+          'hasOwnProperty',
+          'isPrototypeOf',
+          'propertyIsEnumerable',
+          'constructor'
+        ],
+        dontEnumsLength = dontEnums.length;
+
+    return function(obj) {
+      if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+        throw new TypeError('Object.keys called on non-object');
+      }
+
+      var result = [], prop, i;
+
+      for (prop in obj) {
+        if (hasOwnProperty.call(obj, prop)) {
+          result.push(prop);
+        }
+      }
+
+      if (hasDontEnumBug) {
+        for (i = 0; i < dontEnumsLength; i++) {
+          if (hasOwnProperty.call(obj, dontEnums[i])) {
+            result.push(dontEnums[i]);
+          }
+        }
+      }
+      return result;
+    };
+  }());
+}
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

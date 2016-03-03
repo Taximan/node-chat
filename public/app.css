@@ -1,0 +1,188 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+  background-color: #eee;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0091EA;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+#app-wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+
+#app-setup-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0091EA;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#app-setup-modal-form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 300px;
+  align-items: flex-end;
+}
+
+#app-setup-helpblock {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  color: white;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-family: Arial;
+}
+
+#app-setup-modal-form-input {
+  width: 100%;
+  height: 60px;
+  font-size: 40px;
+}
+
+#app-setup-modal-form-submit {
+  margin-top: 5px;
+  width: 130px;
+  height: 60px;
+  font-size: 30px;
+  cursor: pointer;
+  border: none;
+  background-color: #0091EA;
+  color: white;
+  border: 5px solid white;  
+}
+
+#app-setup-modal-form-submit:active {
+  background-color: #007FCE;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#app-sidebar {
+  width: 350px;
+  height: 100%;
+  box-shadow: 3px 0 30px rgba(0, 0, 0, 0.86);
+}
+
+#app-sidebar ul {
+  overflow-y: scroll;
+}
+
+#app-sidebar ul li {
+  width: 100%;  
+  height: 30px;
+  text-align: left;
+  padding-left: 10px;
+  line-height: 30px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+html body #app-sidebar ul li.active {
+  background-color: #0091EA;
+  color: white;
+}
+
+#app-sidebar ul li:hover {
+  background-color: rgba(0, 145, 234, 0.44);
+}
+
+#app-sidebar-roomusers {
+  height: 50%;
+  box-shadow: 0 1px 1px black;  
+}
+
+#app-sidebar-roomusers li {
+
+}
+
+#app-sidebar-rooms {
+  height: 50%;
+}
+
+#app-sidebar-rooms li {
+
+}
+
+#app-main {
+  width: calc(100% - 350px);
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#app-main-messages {
+  height: calc(100% - 60px);
+  width: calc(100vw - 350px);
+  padding: 5px 25px;
+  overflow-y: scroll;
+}
+
+#app-main-messages li {
+ padding: 10px 0;
+ border-bottom: 3px dotted black;
+}
+
+#app-main-messages li div {
+
+}
+
+#app-main-messages li p {
+  margin: 0;
+}
+
+#app-main-messageform {
+  display: flex;
+  width: 100%;
+  height: 60px;
+}
+
+#app-main-messageform textarea {
+  resize: none;
+  width: calc(100% - 60px);
+}
+
+#app-main-messageform button[type="submit"] {
+  width: 60px;
+  height: 60px;
+  background: #0091EA;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
