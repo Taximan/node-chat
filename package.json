@@ -12,7 +12,7 @@
     "koa-static": "^2.0.0",
     "koa.io": "0.0.3"
   },
-  "engine": {
-    "nodejs": "5.x"
+  "engines": {
+    "node": "5.x"
   }
 }
