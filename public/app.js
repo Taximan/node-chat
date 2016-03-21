@@ -110,12 +110,14 @@ function renderSidebarUsers() {
 
 }
 
+var cbs = [];
+
 function renderSidebarRoomList() {
   var templ = '';
-
+  
   // remove previous event listeners
-  [].forEach.call(sidebarRoomList.children, function (li) {
-    li.removeEventListener('click');
+  [].forEach.call(sidebarRoomList.children, function (li, i) {
+    li.removeEventListener('click', cbs[i]);
   });
 
   for(var key in UIData.chatrooms) {
@@ -127,17 +129,16 @@ function renderSidebarRoomList() {
   sidebarRoomList.innerHTML = templ;
 
   // add list items event listers
-  [].forEach.call(sidebarRoomList.children, function (li) {
-    li.addEventListener('click', function (e) {
-      
-      if(li.classList.contains('active'))
-        return; // this one is already sleected
-
-      UIData.active = li.id;
-
-      socket.emit('user room changed', {userId: socket.id, room: UIData.active});
-
-    }, false);
+  [].forEach.call(sidebarRoomList.children, function (li, i) {
+   var handler = function (e) {
+    if(li.classList.contains('active'))
+      return;
+     
+      uidata.active = li.id;
+      socket.emit('user room changed', {userid: socket.id, room: uidata.active}); 
+   }; 
+   li.addEventListener('click', handler, false);
+   cbs[i] = handler;
   });
 
 
