@@ -134,8 +134,8 @@ function renderSidebarRoomList() {
     if(li.classList.contains('active'))
       return;
      
-      uidata.active = li.id;
-      socket.emit('user room changed', {userid: socket.id, room: uidata.active}); 
+      UIData.active = li.id;
+      socket.emit('user room changed', {userId: socket.id, room: UIData.active}); 
    }; 
    li.addEventListener('click', handler, false);
    cbs[i] = handler;
