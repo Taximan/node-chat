@@ -144,11 +144,20 @@ function renderSidebarRoomList() {
 
 }
 
+function sendMessage() {
+  var msg = escapeHtml(messageFormInput.value);
+  socket.emit('new message', {msg: msg, username: UIData.username, at: new Date, room: UIData.active});  
+}
+
+messageFormInput.addEventListener('keydown', function (e) {
+  if(e.keyCode == 13) {// enter 
+    sendMessage();
+  }
+});
 
 messageForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  var msg = escapeHtml(messageFormInput.value);
-  socket.emit('new message', {msg: msg, username: UIData.username, at: new Date, room: UIData.active});
+  sendMessage();
 });
 
 socket.on('user room list change', function (nextUsers) {
